@@ -36,5 +36,5 @@ void Harl::complain(std::string level) {
 		}
 		i++;
 	}
-	std::cout << "Invalid Level.\n";
+	std::cout << "Invalid Level." << std::endl;
 }
