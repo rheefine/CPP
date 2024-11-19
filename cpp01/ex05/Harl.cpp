@@ -22,7 +22,7 @@ void Harl::error() {
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(std::string level) {
+void Harl::complain(const std::string &level) {
 	int i;
 
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
