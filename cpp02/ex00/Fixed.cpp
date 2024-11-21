@@ -22,9 +22,9 @@ Fixed& Fixed::operator=(const Fixed &copy) {
 	return *this;
 };
 
-void Fixed::setRawBits(int const rawBits) {
+void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called" << std::endl;
-	_value = rawBits;
+	_value = raw;
 };
 
 int Fixed::getRawBits() const {
