@@ -35,9 +35,9 @@ class Fixed {
 
 		// 증감 연산자
 		Fixed& operator++();
-		Fixed operator++(int);
+		const Fixed operator++(int);
 		Fixed& operator--();
-		Fixed operator--(int);
+		const Fixed operator--(int);
 
 		// min, max
 		static Fixed& min(Fixed &a, Fixed &b);

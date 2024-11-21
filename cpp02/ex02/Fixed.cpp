@@ -107,7 +107,7 @@ Fixed& Fixed::operator++() {
 	return *this;
 }
 
-Fixed Fixed::operator++(int) {
+const Fixed Fixed::operator++(int) {
 	Fixed temp(*this);
 	++(*this);
 	return temp;
@@ -118,7 +118,7 @@ Fixed& Fixed::operator--() {
 	return *this;
 }
 
-Fixed Fixed::operator--(int) {
+const Fixed Fixed::operator--(int) {
 	Fixed temp(*this);
 	--(*this);
 	return temp;
@@ -126,19 +126,19 @@ Fixed Fixed::operator--(int) {
 
 // min, max 함수
 Fixed& Fixed::min(Fixed &a, Fixed &b) {
-	return (a < b) ? a : b;
+	return (a <= b) ? a : b;
 }
 
 const Fixed& Fixed::min(const Fixed &a, const Fixed &b) {
-	return (a < b) ? a : b;
+	return (a <= b) ? a : b;
 }
 
 Fixed& Fixed::max(Fixed &a, Fixed &b) {
-	return (a > b) ? a : b;
+	return (a >= b) ? a : b;
 }
 
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b) {
-	return (a > b) ? a : b;
+	return (a >= b) ? a : b;
 }
 
 std::ostream &operator<<(std::ostream &out, Fixed const &fixed) {
