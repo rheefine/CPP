@@ -31,8 +31,8 @@ Fixed::Fixed(float const value) {
 	_value = static_cast<int>(roundf(value * (1 << _bits)));
 };
 
-void Fixed::setRawBits(int const raw) {
-	_value = raw;
+void Fixed::setRawBits(int const rawBits) {
+	_value = rawBits;
 };
 
 int Fixed::getRawBits() const {
