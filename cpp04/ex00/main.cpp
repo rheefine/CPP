@@ -20,11 +20,13 @@ int main()
 	delete j;
 	delete i;
 
+	std::cout << "------------------------------------" << std::endl;
 
 	const WrongAnimal* meta2 = new WrongAnimal();
 	const WrongAnimal* i2 = new WrongCat();
-	std::cout << i2->getType() << " " << std::endl << std::endl;
+	const WrongCat* i3 = new WrongCat();
 	i2->makeSound();
+	i3->makeSound();
 	meta2->makeSound();
 
 	delete meta2;

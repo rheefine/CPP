@@ -14,7 +14,7 @@ Cat::~Cat() {
 }
 
 Cat& Cat::operator=(const Cat& other) {
-	std::cout << "Cat Assignation operator called" << std::endl << std::endl;
+	std::cout << "Cat Copy Assignation operator called" << std::endl << std::endl;
 	if (this != &other)
 		_type = other._type;
 	return *this;

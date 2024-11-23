@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
-Animal::Animal() : _type("Not implemented") {
-	std::cout << "Animal constructor called" << std::endl << std::endl;
+Animal::Animal() : _type("default") {
+	std::cout << "Animal default constructor called" << std::endl << std::endl;
 }
 
 Animal::Animal(std::string type) : _type(type) {
@@ -18,7 +18,7 @@ Animal::~Animal() {
 }
 
 Animal& Animal::operator=(const Animal& src) {
-	std::cout << "Animal Assignation operator called" << std::endl << std::endl;
+	std::cout << "Animal Copy Assignation operator called" << std::endl << std::endl;
 	if (this != &src)
 		_type = src._type;
 	return *this;
