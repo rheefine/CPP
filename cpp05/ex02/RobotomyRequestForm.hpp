@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm {
