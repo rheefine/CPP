@@ -1,13 +1,13 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
-
+/*
 #include <cstdlib>
 void checkleak(void) {
 	system("leaks ex03");
 }
-
+*/
 int main(void) {
-	atexit(checkleak);
+//	atexit(checkleak);
 	Intern someRandomIntern;
 	Bureaucrat b1("b1", 2);
 	AForm* rrf;
@@ -21,7 +21,7 @@ int main(void) {
 		std::cout << *rrf;
 		rrf->beSigned(b1);
 		rrf->execute(b1);
-
+		delete rrf;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -33,7 +33,7 @@ int main(void) {
 		std::cout << *rrf2;
 		rrf2->beSigned(b1);
 		rrf2->execute(b1);
-
+		delete rrf2;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -45,7 +45,7 @@ int main(void) {
 		std::cout << *rrf3;
 		rrf3->beSigned(b1);
 		rrf3->execute(b1);
-
+		delete rrf3;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -57,7 +57,7 @@ int main(void) {
 		std::cout << *rrf4;
 		rrf4->beSigned(b1);
 		rrf4->execute(b1);
-
+		delete rrf4;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
