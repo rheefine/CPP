@@ -2,8 +2,11 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 int main(void) {
+	srand(time(NULL));
 	Bureaucrat b1("b1", 1);
 	ShrubberyCreationForm form("home1");
 	RobotomyRequestForm form2("Robot1");
