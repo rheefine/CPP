@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <cmath>
 
 class ScalarConverter {
 	public:
@@ -25,6 +26,10 @@ class ScalarConverter {
 				const char *what() const throw();
 		};
 		class NonDisplayableException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class InvalidInputException : public std::exception {
 			public:
 				const char *what() const throw();
 		};
