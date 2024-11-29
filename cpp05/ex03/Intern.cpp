@@ -7,9 +7,7 @@ Intern::Intern(const Intern &src) { *this = src; }
 Intern::~Intern() {}
 
 Intern &Intern::operator=(const Intern &src) {
-	if (this != &src) {
-		*this = src;
-	}
+	(void)src;
 	return *this;
 }
 
