@@ -16,7 +16,7 @@ class ScalarConverter {
 		ScalarConverter(const ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
 
-		static char convertChar(double d);
+		static std::string convertChar(double d);
 		static int convertInt(double d);
 		static float convertFloat(double d);
 		static double convertDouble(double d);

@@ -23,7 +23,7 @@ void ScalarConverter::convert(char *input) {
         d = strtod(input, &endptr);
         if (input == endptr && strlen(input) != 1)
             throw ScalarConverter::InvalidInputException();
-        if (*endptr != '\0' && *endptr != 'f')
+        if (*endptr != '\0' && (*endptr != 'f' || *(endptr + 1) != '\0'))
             throw ScalarConverter::InvalidInputException();
     }
 
@@ -51,13 +51,18 @@ void ScalarConverter::convert(char *input) {
 	std::cout << ScalarConverter::convertDouble(d) << std::endl;
 }
 
-char ScalarConverter::convertChar(double d) {
+std::string ScalarConverter::convertChar(double d) {
 	if (isnan(d) || isinf(d) || d < CHAR_MIN || d > CHAR_MAX)
 		throw ScalarConverter::ImpossibleException();
+	
 	char c = static_cast<char>(d);
 	if (c < 32 || c > 126)
 		throw ScalarConverter::NonDisplayableException();
-	return c;
+	
+	std::string result = "'";
+	result += c;
+	result += "'";
+	return result;
 }
 
 int ScalarConverter::convertInt(double d) {
