@@ -17,15 +17,16 @@ void ScalarConverter::convert(char *input) {
 	char *endptr;
 	double d;
 
-    if (strlen(input) == 1) {
-        d = static_cast<double>(input[0]);
-	} else {
-        d = strtod(input, &endptr);
-        if (input == endptr && strlen(input) != 1)
-            throw ScalarConverter::InvalidInputException();
-        if (*endptr != '\0' && (*endptr != 'f' || *(endptr + 1) != '\0'))
-            throw ScalarConverter::InvalidInputException();
-    }
+	if (strlen(input) == 1) {
+		d = static_cast<double>(input[0]);
+	}
+	else {
+		d = strtod(input, &endptr);
+		if (input == endptr && strlen(input) != 1)
+			throw ScalarConverter::InvalidInputException();
+		if (*endptr != '\0' && (*endptr != 'f' || *(endptr + 1) != '\0'))
+			throw ScalarConverter::InvalidInputException();
+	}
 
 	try {
 		std::cout << "char: ";
@@ -42,7 +43,7 @@ void ScalarConverter::convert(char *input) {
 	}
 
 	std::cout << std::fixed;
-    std::cout.precision(1);
+	std::cout.precision(1);
 
 	std::cout << "float: ";
 	std::cout << ScalarConverter::convertFloat(d) << "f" << std::endl;
@@ -54,11 +55,11 @@ void ScalarConverter::convert(char *input) {
 std::string ScalarConverter::convertChar(double d) {
 	if (isnan(d) || isinf(d) || d < CHAR_MIN || d > CHAR_MAX)
 		throw ScalarConverter::ImpossibleException();
-	
+
 	char c = static_cast<char>(d);
 	if (c < 32 || c > 126)
 		throw ScalarConverter::NonDisplayableException();
-	
+
 	std::string result = "'";
 	result += c;
 	result += "'";
