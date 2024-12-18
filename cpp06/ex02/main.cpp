@@ -11,7 +11,6 @@ Base* generate(void) {
 	// 시드 초기화
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
-	// 0, 1, 2 중 무작위 선택
 	int random = std::rand() % 3;
 
 	switch (random) {
