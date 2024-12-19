@@ -17,7 +17,7 @@ void ScalarConverter::convert(char *input) {
 	char *endptr;
 	double d;
 
-	if (strlen(input) == 1) {
+	if (strlen(input) == 1 && !(input[0] >= '0' && input[0] <= '9')) {
 		d = static_cast<double>(input[0]);
 	}
 	else {
