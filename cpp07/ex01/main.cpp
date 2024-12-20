@@ -1,12 +1,6 @@
 #include <iostream>
 #include "iter.hpp"
 
-// 테스트 함수 템플릿
-template<typename T>
-void print(T const & x) {
-	std::cout << x << " ";
-}
-
 // 특정 타입을 위한 테스트 함수들
 void multiply2(int const & n) {
 	std::cout << n * 2 << " ";
