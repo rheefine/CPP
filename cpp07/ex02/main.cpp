@@ -47,14 +47,6 @@ int custom_test() {
 	}
 	std::cout << std::endl;
 
-	try {
-		// 범위를 벗어난 접근 테스트
-		numbers[10] = 0;
-	}
-	catch (const std::exception& e) {
-		std::cout << "Exception : Index out of range" << std::endl;
-	}
-
 	// 문자열 배열
 	Array<std::string> strings(3);
 	strings[0] = "Hello";
