@@ -2,11 +2,8 @@
 #include <list>
 #include <iostream>
 
-void test_reverse() {
+void test_reverse(MutantStack<int> mstack) {
 	std::cout << "\n=== Test Reverse Iterator ===" << std::endl;
-	MutantStack<int> mstack;
-	for (int i = 1; i <= 5; ++i)
-		mstack.push(i);
 
 	std::cout << "Forward iteration: ";
 	for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
@@ -18,6 +15,25 @@ void test_reverse() {
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
+
+void test_const(const MutantStack<int>& mstack) {
+	std::cout << "\n=== Test Const Iterators ===" << std::endl;
+
+	std::cout << "Const forward iteration: ";
+	for (MutantStack<int>::const_iterator it = mstack.begin(); it != mstack.end(); ++it) {
+		std::cout << *it << " ";
+		// *it = 10;  // 컴파일 에러
+	}
+	std::cout << std::endl;
+
+	std::cout << "Const reverse iteration: ";
+	for (MutantStack<int>::const_reverse_iterator it = mstack.rbegin(); it != mstack.rend(); ++it) {
+		std::cout << *it << " ";
+		// *it = 10;  // 컴파일 에러
+	}
+	std::cout << std::endl;
+}
+
 
 void test_list() {
 	std::cout << "\n=== Compare List ===" << std::endl;
@@ -45,8 +61,7 @@ void test_list() {
 	std::cout << std::endl;
 }
 
-int main()
-{
+void test_ms() {
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -68,8 +83,17 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
+}
 
+int main()
+{
+	test_ms();
 	test_list();
-	test_reverse();
+
+	MutantStack<int> mstack;
+	for (int i = 1; i <= 5; ++i)
+		mstack.push(i);
+	test_reverse(mstack);
+	test_const(mstack);
 	return 0;
 }
