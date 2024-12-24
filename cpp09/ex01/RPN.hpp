@@ -1,20 +1,25 @@
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#include <iostream>
-#include <string>
 #include <stack>
-#include <algorithm>
+#include <string>
+#include <exception>
+#include <iostream>
 
 class RPN {
-	public:
-		RPN();
-		RPN(const RPN &other);
-		~RPN();
-		RPN &operator=(const RPN &other);
+private:
+	std::stack<int> numbers;
 
-	private:
-		void execute();
+	bool isOperator(const char c) const;
+	void performOperation(const char op);
+
+public:
+	RPN();
+	~RPN();
+	RPN(const RPN& other);
+	RPN& operator=(const RPN& other);
+
+	void calculate(const std::string& expression);
 };
 
 #endif
