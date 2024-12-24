@@ -19,8 +19,19 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 }
 
 void BitcoinExchange::parseData() {
-	std::ifstream dataFile = openDataFile();
-	std::string line;
+    std::ifstream dataFile("data.csv");
+    if (!dataFile.is_open()) {
+        std::cout << "Error: could not open file." << std::endl;
+        throw std::exception();
+    }
+
+    std::string line;
+    std::getline(dataFile, line);
+    if (line != "date,exchange_rate") {
+        std::cout << "Error: Invalid data format" << std::endl;
+        dataFile.close();
+        throw std::exception();
+    }
 
 	while(getline(dataFile, line)) {
 		if (line.empty()) {
@@ -50,8 +61,19 @@ void BitcoinExchange::parseData() {
 }
 
 void BitcoinExchange::printResult() {
-	std::ifstream inputFile = openInputFile();
-	std::string line;
+    std::ifstream inputFile(_filename.c_str());
+    if (!inputFile.is_open()) {
+        std::cout << "Error: could not open file." << std::endl;
+        throw std::exception();
+    }
+
+    std::string line;
+    std::getline(inputFile, line);
+    if (line != "date | value") {
+        std::cout << "Error: invalid header format" << std::endl;
+        inputFile.close();
+        throw std::exception();
+    }
 
 	while (std::getline(inputFile, line)) {
 		if (line.length() < 13 || line[10] != ' ' || line[11] != '|' || line[12] != ' ') {
@@ -103,39 +125,6 @@ void BitcoinExchange::printResult() {
 	inputFile.close();
 }
 
-std::ifstream BitcoinExchange::openFile(const std::string& filename) const {
-	std::ifstream file(filename.c_str());
-	if (!file.is_open()) {
-		std::cout << "Error: could not open file." << std::endl;
-		throw std::exception();
-	}
-	return file;
-}
-
-std::ifstream BitcoinExchange::openDataFile() const {
-	std::ifstream file = openFile("data.csv");
-	std::string line;
-	std::getline(file, line);
-	if (line != "date,exchange_rate") {
-		std::cout << "Error: Invalid data format" << std::endl;
-		file.close();
-		throw std::exception();
-	}
-	return file;
-}
-
-std::ifstream BitcoinExchange::openInputFile() const {
-	std::ifstream file = openFile(_filename.c_str());
-	std::string line;
-	std::getline(file, line);
-	if (line != "date | value") {
-		std::cout << "Error: invalid header format" << std::endl;
-		file.close();
-		throw std::exception();
-	}
-	return file;
-}
-
 bool BitcoinExchange::isValidDate(const std::string& dateStr) {
 	if (dateStr.length() != 10) {
 		return false;
@@ -161,7 +150,7 @@ bool BitcoinExchange::isValidDate(const std::string& dateStr) {
 	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-		daysInMonth[1] = 29; //윤년
+		daysInMonth[1] = 29;
 	}
 
 	if (day > daysInMonth[month - 1]) {

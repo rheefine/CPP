@@ -20,9 +20,6 @@ class BitcoinExchange {
 		std::string _filename;
 		std::map<std::string, double> _data;
 		bool isValidDate(const std::string& dateStr);
-		std::ifstream openFile(const std::string& filename) const;
-		std::ifstream openDataFile() const;
-		std::ifstream openInputFile() const;
 };
 
 #endif
