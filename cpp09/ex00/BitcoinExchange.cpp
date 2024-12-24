@@ -13,6 +13,7 @@ BitcoinExchange::~BitcoinExchange() {
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 	if (this != &other) {
 		_filename = other._filename;
+		_data = other._data;
 	}
 	return *this;
 }
