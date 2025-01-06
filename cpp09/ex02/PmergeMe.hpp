@@ -1,10 +1,9 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include "Node.hpp"
 #include <vector>
 #include <iostream>
-#include <utility> // for std::pair
-#include <algorithm> // for std::lower_bound
 
 class PmergeMe {
 public:
@@ -16,13 +15,16 @@ public:
 	void addNumber(int num);
 	void sort();
 	void printNumbers() const;
-	const std::vector<int>& getNumbers() const;
+	void printResult() const;
 
 private:
-	std::vector<int> numbers;
+	std::vector<Node> numbers;
+	std::vector<Node> result;
+	std::vector<int> sequence;
 
-	void recursiveSort(std::vector<std::pair<int, int> >& pairs);
-	void binaryInsert(std::vector<int>& chain, int element);
+	std::vector<int> generateJacobsthalNumbers(size_t n);
+	void binaryInsert(Node element);
+	void recursiveSort(std::vector<Node>& nodes);
 };
 
 #endif
